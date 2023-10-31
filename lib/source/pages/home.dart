@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rwku/source/router/string.dart';
+import 'package:rwku/source/widget/customContainer.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,6 +20,19 @@ class _HomeScreenState extends State<HomeScreen> {
       body: ListView(
         children: [
           const SizedBox(height: 12),
+          Container(
+            margin: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Image.asset("assets/logo.jpg", height: 35),
+                const SizedBox(width: 12),
+                Column(
+                  children: [Text("Hallo, Selamat Datang", style: GoogleFonts.lato(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.blueAccent))],
+                )
+              ],
+            ),
+          ),
           Container(
             margin: const EdgeInsets.all(8.0),
             padding: const EdgeInsets.all(8.0),
@@ -51,136 +65,109 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 12),
                 Animate(
                   effects: [FadeEffect(duration: const Duration(milliseconds: 700))],
-                  child: ListTile(
-                    onTap: () {
-                      Navigator.pushNamed(context, webViewScreen);
-                    },
-                    leading: Icon(Icons.recycling),
-                    title: Text("Pelaporan Data Sampah"),
-                    trailing: Icon(Icons.arrow_forward_ios),
-                  ),
+                  child: Text("Main Feature", style: GoogleFonts.lato(fontSize: 18),),
                 ),
+                const SizedBox(height: 25),
+                Animate(
+                    effects: [FadeEffect(duration: const Duration(milliseconds: 700))],
+                    child: GridView.count(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      crossAxisCount: 4,
+                      children: [
+                        // InkWell(
+                        //   onTap: () {
+                        //     Navigator.pushNamed(context, webViewScreen);
+                        //   },
+                        //   child: Container(
+                        //     child: Column(
+                        //       children: [
+                        //         Icon(Icons.recycling, color: Colors.deepPurpleAccent, size: 30),
+                        //         const SizedBox(height: 8),
+                        //         Text(
+                        //           "Pengolahan Sampah",
+                        //           textAlign: TextAlign.center,
+                        //           style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w600),
+                        //         )
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, admScreen);
+                          },
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Image.asset("assets/GoodNotes.png", height: 30),
+                                const SizedBox(height: 8),
+                                Text(
+                                  "Administrasi",
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w600),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, posyanduScreen);
+                          },
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Image.asset("assets/Home.png", height: 30),
+                                const SizedBox(height: 8),
+                                Text(
+                                  "Posyandu",
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w600),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, sekolahScreen);
+                          },
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Image.asset("assets/School.png", height: 30),
+                                const SizedBox(height: 8),
+                                Text(
+                                  "Sekolah Kehidupan",
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w600),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, aboutScreen);
+                          },
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Icon(Icons.info_outline, size: 35),
+                                const SizedBox(height: 8),
+                                Text(
+                                  "About",
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w600),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    )),
                 const SizedBox(height: 12),
-                Text(
-                  "About RW-ku",
-                  style: GoogleFonts.lato(fontSize: 21, fontWeight: FontWeight.w500, color: Colors.blueGrey),
-                ),
-                const SizedBox(height: 12),
-                Animate(
-                  effects: [FadeEffect(duration: const Duration(milliseconds: 700))],
-                  child: TimelineTile(
-                    alignment: TimelineAlign.manual,
-                    lineXY: 0.1,
-                    isFirst: true,
-                    indicatorStyle: const IndicatorStyle(
-                      color: Color(0XFF7BA7D7),
-                    ),
-                    beforeLineStyle: const LineStyle(
-                      color: Color(0XFF7BA7D7),
-                      thickness: 6,
-                    ),
-                    endChild: ListTile(
-                      leading: Image.asset("assets/phone.png", height: 30),
-                      title: Text("Aplikasi"),
-                      subtitle: Text("RW-ku"),
-                    ),
-                  ),
-                ),
-                Animate(
-                  effects: [FadeEffect(duration: const Duration(milliseconds: 700))],
-                  child: TimelineDivider(
-                    begin: 0.1,
-                    end: 0.9,
-                    thickness: 6,
-                    color: Color(0XFF7BA7D7),
-                  ),
-                ),
-                Animate(
-                  effects: [FadeEffect(duration: const Duration(milliseconds: 700))],
-                  child: TimelineTile(
-                    alignment: TimelineAlign.manual,
-                    lineXY: 0.9,
-                    beforeLineStyle: const LineStyle(
-                      color: Color(0XFF779FE5),
-                      thickness: 6,
-                    ),
-                    afterLineStyle: const LineStyle(
-                      color: Colors.grey,
-                      thickness: 6,
-                    ),
-                    indicatorStyle: const IndicatorStyle(
-                      width: 20,
-                      color: Color(0XFF779FE5),
-                    ),
-                    startChild: ListTile(
-                      leading: Image.asset("assets/version.png", height: 30),
-                      title: Text("Version"),
-                      subtitle: Text("1.0"),
-                    ),
-                  ),
-                ),
-                Animate(
-                  effects: [FadeEffect(duration: const Duration(milliseconds: 700))],
-                  child: const TimelineDivider(
-                    begin: 0.1,
-                    end: 0.9,
-                    thickness: 6,
-                    color: Colors.grey,
-                  ),
-                ),
-                Animate(
-                  effects: [FadeEffect(duration: const Duration(milliseconds: 700))],
-                  child: TimelineTile(
-                    alignment: TimelineAlign.manual,
-                    lineXY: 0.1,
-                    beforeLineStyle: const LineStyle(
-                      color: Colors.grey,
-                      thickness: 6,
-                    ),
-                    indicatorStyle: const IndicatorStyle(
-                      width: 20,
-                      color: Colors.grey,
-                    ),
-                    endChild: ListTile(
-                      leading: Text("Desc"),
-                      title: Text("Memberikan kemudahan layanan kepada warga melalui pendekatan digital."),
-                    ),
-                  ),
-                ),
-                Animate(
-                  effects: [FadeEffect(duration: const Duration(milliseconds: 700))],
-                  child: const TimelineDivider(
-                    begin: 0.1,
-                    end: 0.9,
-                    thickness: 6,
-                    color: Colors.deepPurple,
-                  ),
-                ),
-                Animate(
-                  effects: [FadeEffect(duration: const Duration(milliseconds: 700))],
-                  child: TimelineTile(
-                    alignment: TimelineAlign.manual,
-                    lineXY: 0.9,
-                    isLast: true,
-                    beforeLineStyle: const LineStyle(
-                      color: Colors.deepPurple,
-                      thickness: 6,
-                    ),
-                    afterLineStyle: const LineStyle(
-                      color: Colors.deepPurple,
-                      thickness: 6,
-                    ),
-                    indicatorStyle: const IndicatorStyle(
-                      width: 20,
-                      color: Colors.deepPurple,
-                    ),
-                    startChild: ListTile(
-                      leading: Image.asset("assets/dev.png", height: 30),
-                      title: Text("Tim Pengembang"),
-                      subtitle: Text("Dosen dan Mahasiswa Sekolah Tinggi Teknologi Bandung"),
-                    ),
-                  ),
-                ),
               ],
             ),
           )

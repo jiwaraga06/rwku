@@ -70,6 +70,9 @@ flutter:
     - assets/phone.png
     - assets/version.png
     - assets/dev.png
+    - assets/GoodNotes.png
+    - assets/Home.png
+    - assets/School.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
